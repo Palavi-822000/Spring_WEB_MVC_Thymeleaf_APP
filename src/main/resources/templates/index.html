@@ -6,21 +6,27 @@
 </head>
 <body>
 
-<h2>Product Form</h2>
+	<h2>Product Form</h2>
+	
+	<p th:text=${msg}/>
 
 	<form th:action="@{/product}" th:object="${product}" method="POST">
 		<table>
 			<tr>
 				<td>ProductID</td>
 				<td><input type="text" th:field="*{pid}" /></td>
+				<td th:if="${#fields.hasErrors('pid')}" th:errors="*{pid}">ID is
+					Required</td>
 			</tr>
 			<tr>
 				<td>Product Name</td>
 				<td><input type="text" th:field="*{pname}" /></td>
+				<td th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}">Name is Required </td>
 			</tr>
 			<tr>
 				<td>Product Price</td>
 				<td><input type="text" th:field="*{price}" /></td>
+				<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price is Required</td>
 			</tr>
 			<tr>
 				<td></td>
